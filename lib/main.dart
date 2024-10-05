@@ -10,7 +10,8 @@ class CalculatorApp extends StatelessWidget {
     return MaterialApp(
       title: 'Simple Calculator',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       home: CalculatorHomePage(),
     );
@@ -101,6 +102,12 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
   Widget _buildButton(String label) {
     return Expanded(
       child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: const Color.fromARGB(255, 77, 108, 78),
+          foregroundColor: Colors.white,
+          padding: EdgeInsets.all(24),
+        ),
+
         onPressed: () => _onButtonPressed(label),
         child: Text(
           label,
@@ -115,6 +122,8 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Simple Calculator'),
+        backgroundColor: const Color.fromARGB(255, 77, 108, 78),
+        foregroundColor: Colors.white,
       ),
       body: Column(
         children: <Widget>[
@@ -124,7 +133,11 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
               padding: EdgeInsets.symmetric(horizontal: 24),
               child: Text(
                 _displayText,
-                style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: _hasError ? Colors.red : Colors.black),
+                style: TextStyle(
+                  fontSize: 48, 
+                  fontWeight: FontWeight.bold, 
+                  color: _hasError ? Colors.red : Colors.black // if dividing by zero change result color to red
+                ), 
               ),
             ),
           ),
